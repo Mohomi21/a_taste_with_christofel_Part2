@@ -70,135 +70,135 @@ export default function App(): React.ReactElement {
 
     return (
         <ImageBackground
-            source={require('./assets/snaps.jpg')}
+            source={require('ST10439290_Dimakatso_Mohomi_Code/part-two/assets/snap.jpg')}
             style={styles.background}
         >
-            <SafeAreaView style={styles.container}>
-                <ScrollView style={styles.scrollView}>
-                    {/* Header */}
-                    <View style={styles.header}>
-                        <Text style={styles.appTitle}>
-                            A Taste With <Text style={styles.goldText}>Christoffel</Text>
-                        </Text>
-                        <Text style={styles.subtitle}>Select your preferred course/meal</Text>
-                    </View>
+        <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.scrollView}>
+        {/* Header */}
+        <View style={styles.header}>
+        <Text style={styles.appTitle}>
+        A Taste With <Text style={styles.goldText}>Chef Christoffel</Text>
+        </Text>
+        <Text style={styles.subtitle}>Select your preferred course/meal</Text>
+        </View>
 
-                    {/* Add Form */}
-                    <View style={styles.formContainer}>
-                        <Text style={styles.formTitle}>Add New Menu Item</Text>
+       
+        <View style={styles.formContainer}>
+        <Text style={styles.formTitle}>Add New Menu Item</Text>
 
-                        <Text style={styles.label}>Dish Name:</Text>
-                        <TextInput
-                            style={styles.input}
-                            value={mealName}
-                            onChangeText={setMealName}
-                            placeholder="Enter your preffered dish name"
-                            placeholderTextColor="#999"
-                        />
+        <Text style={styles.label}>Dish Name:</Text>
+        <TextInput
+        style={styles.input}
+        value={mealName}
+        onChangeText={setMealName}
+        placeholder="Enter your preffered dish name"
+        placeholderTextColor="#999"
+        />
 
-                        <Text style={styles.label}>Description:</Text>
-                        <TextInput
-                            style={[styles.input, styles.textArea]}
-                            value={description}
-                            onChangeText={setDescription}
-                            placeholder="Enter meal description"
-                            placeholderTextColor="#999"
-                            multiline
-                        />
+        <Text style={styles.label}>Description:</Text>
+        <TextInput
+        style={[styles.input, styles.textArea]}
+        value={description}
+        onChangeText={setDescription}
+        placeholder="Enter meal description"
+        placeholderTextColor="#999"
+        multiline
+        />
 
-                        <Text style={styles.label}>Course:</Text>
-                        <View style={styles.courseContainer}>
-                            {courses.map(course => (
-                                <Pressable
-                                    key={course}
-                                    style={[
-                                        styles.courseButton,
-                                        selectedCourse === course && styles.courseButtonSelected,
-                                    ]}
-                                    onPress={() => setSelectedCourse(course)}
-                                >
-                                    <Text
-                                        style={[
-                                            styles.courseButtonText,
-                                            selectedCourse === course && styles.courseButtonTextSelected,
-                                        ]}
-                                    >
-                                        {course}
-                                    </Text>
-                                </Pressable>
-                            ))}
-                        </View>
+        <Text style={styles.label}>Course:</Text>
+        <View style={styles.courseContainer}>
+        {courses.map(course => (
+        <Pressable
+        key={course}
+        style={[
+        styles.courseButton,
+        selectedCourse === course && styles.courseButtonSelected,
+        ]}
+        onPress={() => setSelectedCourse(course)}
+        >
+        <Text
+    style={[
+        styles.courseButtonText,
+         selectedCourse === course && styles.courseButtonTextSelected,
+        ]}
+        >
+        {course}
+        </Text>
+        </Pressable>
+        ))}
+        </View>
 
-                        <Text style={styles.label}>Price (R):</Text>
-                        <TextInput
-                            style={styles.input}
-                            value={price}
-                            onChangeText={setPrice}
-                            placeholder="Enter price (e.g. 100.00)"
-                            placeholderTextColor="#999"
-                            keyboardType="numeric"
-                        />
+        <Text style={styles.label}>Price (R):</Text>
+        <TextInput
+         style={styles.input}
+        value={price}
+        onChangeText={setPrice}
+        placeholder="Enter price (e.g. 100.00)"
+        placeholderTextColor="#999"
+        keyboardType="numeric"
+        />
 
-                        <Pressable style={styles.addButton} onPress={addMenuItem}>
-                            <Text style={styles.addButtonText}>Add to Menu</Text>
-                        </Pressable>
-                    </View>
+       <Pressable style={styles.addButton} onPress={addMenuItem}>
+     <Text style={styles.addButtonText}>Add to Menu</Text>
+    </Pressable>
+    </View>
 
-                    {/* Menu/Navigation Section */}
-                    {!showMenuPage ? (
-                        <View style={styles.menuContainer}>
-                            <Text style={styles.menuTitle}>Chef's Menu</Text>
+    {/* Menu/Navigation Section */}
+    {!showMenuPage ? (
+        <View style={styles.menuContainer}>
+         <Text style={styles.menuTitle}>Chef's Menu</Text>
 
-                            <Pressable
-                                style={styles.viewMenuButton}
-                                onPress={() => setShowMenuPage(true)}
-                            >
-                                <Text style={styles.viewMenuButtonText}>View Menu</Text>
-                            </Pressable>
-                        </View>
-                    ) : (
-                        <View style={styles.menuPageContainer}>
-                            <View style={styles.menuPageHeader}>
-                                <Text style={styles.menuTitle}>Chef's Menu</Text>
+         <Pressable
+         style={styles.viewMenuButton}
+        onPress={() => setShowMenuPage(true)}
+        >
+        <Text style={styles.viewMenuButtonText}>View Menu</Text>
+        </Pressable>
+        </View>
+        ) : (
+       <View style={styles.menuPageContainer}>
+        <View style={styles.menuPageHeader}>
+      <Text style={styles.menuTitle}>Chef's Menu</Text>
 
-                                <Pressable
-                                    style={styles.backButton}
-                                    onPress={() => setShowMenuPage(false)}
-                                >
-                                    <Text style={styles.backButtonText}>Back</Text>
-                                </Pressable>
-                            </View>
+    <Pressable
+    style={styles.backButton}
+    onPress={() => setShowMenuPage(false)}
+    >
+    <Text style={styles.backButtonText}>Back</Text>
+    </Pressable>
+    </View>
 
-                            {menuItems.length === 0 ? (
-                                <Text style={styles.emptyText}>No menu items added yet.</Text>
-                            ) : (
-                                menuItems.map(item => (
-                                    <View key={item.id} style={styles.menuItem}>
-                                        <View style={styles.menuItemHeader}>
-                                            <Text style={styles.dishName}>{item.dishName}</Text>
-                                            <Text style={styles.price}>R{item.price.toFixed(2)}</Text>
-                                        </View>
-                                        <Text style={styles.course}>Course: {item.course}</Text>
-                                        <Text style={styles.description}>{item.description}</Text>
+    {menuItems.length === 0 ? (
+    <Text style={styles.emptyText}>No menu items added yet.</Text>
+    ) : (
+     menuItems.map(item => (
+     <View key={item.id} style={styles.menuItem}>
+     <View style={styles.menuItemHeader}>
+     <Text style={styles.dishName}>{item.dishName}</Text>
+     <Text style={styles.price}>R{item.price.toFixed(2)}</Text>
+    </View>
+    <Text style={styles.course}>Course: {item.course}</Text>
+    <Text style={styles.description}>{item.description}</Text>
 
-                                        <Pressable
-                                            style={styles.deleteButton}
-                                            onPress={() => deleteMenuItem(item.id)}
-                                        >
-                                            <Text style={styles.deleteButtonText}>Delete</Text>
-                                        </Pressable>
-                                    </View>
-                                ))
-                            )}
-                        </View>
-                    )}
-                </ScrollView>
-            </SafeAreaView>
+    <Pressable
+        style={styles.deleteButton}
+        onPress={() => deleteMenuItem(item.id)}
+        >
+        <Text style={styles.deleteButtonText}>Delete</Text>
+    </Pressable>
+    </View>
+    ))
+    )}
+    </View>
+    )}
+    </ScrollView>
+        </SafeAreaView>
         </ImageBackground>
     );
 }
 
-// Styles (neatly formatted: each property on its own line)
+
 const styles = StyleSheet.create({
     background: {
         flex: 1,
